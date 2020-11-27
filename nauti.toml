@@ -1,0 +1,16 @@
+# nauti.toml
+# ----------
+#    Top configuration file for use with 'nauti' CLI
+
+domain_names = [
+    'mlb.org',
+    'mlb.com',
+    'mlbam.com',
+    'mlbam.net',
+    'mlbam.mlb.org',
+    'neteng.mlbinfra.net',
+    'mlbinfra.net',
+]
+
+sources = ['ipfabric', 'netbox', 'clearpass']
+collections = ['devices', 'interfaces', 'ipaddrs', 'interfaces']

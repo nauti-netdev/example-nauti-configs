@@ -1,0 +1,219 @@
+name = 'devices'
+
+[fields]
+
+    vendors = ['arista', 'cisco', "avocent", "raritran"]
+
+    os_name = ['eos', 'ios', 'ios-xe', 'ios-xr', 'nx-os']
+
+    models = [
+        # ---------------------------------------------------------------------
+        #                             Arista
+        # ---------------------------------------------------------------------
+
+        "ccs-720xp-48zc2",
+        "dcs-7010t-48",
+        "dcs-7020sr-32c2",
+        "dcs-7050cx3-32s", "dcs-7050sx3-48yc12",
+        "dcs-7280cr2a-30", "dcs-7280sr2-48yc6",
+        "cvx",
+
+        # ---------------------------------------------------------------------
+        #                         Cisco Firewall Models
+        # ---------------------------------------------------------------------
+
+        "fpr2140-ngfw-k9", "asa5515x-k8", "asa5585-x",
+
+        # ---------------------------------------------------------------------
+        #                         Cisco ISR, ASR Models
+        # ---------------------------------------------------------------------
+
+        "asr1002-hx", "asr9001",
+        "isr4451-x",
+
+        # ---------------------------------------------------------------------
+        #                         Cisco Catalyst Models
+        # ---------------------------------------------------------------------
+
+        # Cisco Cat 9K
+        "c9300-24p", "c9300-24t", "c9300-24u", "c9300-24ux", "c9300-48u",
+        "c9300-48uxm", "c9500-40x", "c9500-48y4c", "c9800-80-k9",
+
+        # Cisco Cat 2900
+        "ws-c2960s-24ps-l",
+
+        # Cisco Cat 3500
+        "ws-c3560cg-8pc-s", "ws-c3560cx-12pc-s", "ws-c3560cx-12pd-s", "ws-c3560x-24",
+
+        # Cisco Cat 3600
+        "ws-c3650-48pd", "ws-c3650-48ps", "ws-c3650-48tq",
+
+        # Cisco Cat 3700
+        "ws-c3750x-24",
+
+        # Cisco Cat 3800
+        "catalyst-3850-48pt-12-mgig36-gig-upoe", "ws-c3850-24p", "ws-c3850-24t",
+        "ws-c3850-24xu", "ws-c3850-48p",
+
+        # Cisco Cat 4000
+        "ws-c4500x-16sfp_plus", "ws-c4948-s",
+
+        # ---------------------------------------------------------------------
+        #                         Cisco Nexus Models
+        # ---------------------------------------------------------------------
+
+        # Cisco Nexus 3K
+        "n3k-c3064pq",
+
+        # Cisco Nexus 5K
+        "n5k-c5672up",
+
+        # Cisco Nexus 7K
+        "n7k-c7004", "n7k-c7009", "n7k-c7702", "n7k-c7706",
+
+        # Cisco Nexus 9K
+        "n9k-c93180yc-ex", "n9k-c93108tc-fx", "n9k-c93180yc-fx",
+        "n9k-c9348gc-fxp", "n9k-c9372px",
+
+        # ---------------------------------------------------------------------
+        #                      Palo Alto Firewall Models
+        # ---------------------------------------------------------------------
+
+        "pa-3220", "pa-3260",
+        "pa-5220", "pa-5250", "pa-5260",
+        "pa-7050",
+    ]
+
+# -----------------------------------------------------------------------------
+#
+#                          ClearPass Collection
+#
+# -----------------------------------------------------------------------------
+
+[sources.clearpass.maps.vendor]
+    "Arista" = "arista"
+    "Cisco" = "cisco"
+    "Avocent" = 'avocent'
+    "Raritran" = 'raritran'
+    'Cisco-ASA' = 'cisco:cisco'
+
+[sources.clearpass.maps.cisco]
+    # when vendor is Cisco, there are different Clearpass Vendor options; so we
+    # will use the os_name field to determine how to do the 2nd-order mapping
+    # for Cisco specifically
+
+    "Cisco-ASA" = 'asa'
+
+# -----------------------------------------------------------------------------
+#
+#                          IP Fabric Collection
+#
+# -----------------------------------------------------------------------------
+
+[sources.ipfabric.maps.model]
+
+    # -------------------------------------------------------------------------
+    # map IP Fabric device model; normalizing to Netbox device-type slug
+    # -------------------------------------------------------------------------
+
+    # Arista
+
+    "CCS-720XP-48ZC2-F" = "ccs-720xp-48zc2"
+    "DCS-7010T-48" = "dcs-7010t-48"
+    "DCS-7020SR-32C2-F" = "dcs-7020sr-32c2"
+    "DCS-7050CX3-32S-F" = "dcs-7050cx3-32s"
+    "DCS-7050SX3-48YC12-F" = "dcs-7050sx3-48yc12"
+    "DCS-7280CR2A-30-F" = "dcs-7280cr2a-30"
+    "DCS-7280SR2K-48C6-M-F" = "dcs-7280sr2-48yc6"
+    "CVX" = "cvx"
+
+    # Cisco ASA
+
+    "FPR-2140" = "fpr2140-ngfw-k9"
+    "5515" = "asa5515x-k8"
+    "5585-SSP-20" = "asa5585-x"
+
+    # Cisco ASR
+
+    "ASR1002-HX" = "asr1002-hx"
+    "ASR-9001" = "asr-9001"
+
+    # Cisco 9K
+
+    "C9300-24P" = "c9300-24p"
+    "C9300-24T" = "c9300-24t"
+    "C9300-24U" = "c9300-24u"
+    "C9300-24UX" = "c9300-24ux"
+    "C9300-48U" = "c9300-48u"
+    "C9300-48UXM" = "c9300-48uxm"
+    "C9500-40X" = "c9500-40x"
+    "C9500-48Y4C" = "c9500-48y4c"
+    "C9800-80-K9" = "c9800-80-k9"
+
+    # Cisco 2900
+
+    "WS-C2960S-24PS-L" = "ws-c2960s-24ps-l"
+
+    # Cisco 3500
+
+    "WS-C3560CG-8PC-S" = "ws-c3560cg-8pc-s"
+    "WS-C3560CX-12PC-S" = "ws-c3560cx-12pc-s"
+    "WS-C3560CX-12PD-S" = "ws-c3560cx-12pd-s"
+    "WS-C3560X-24" = "ws-c3560x-24"
+
+    # Cisco 3600
+
+    "WS-C3650-48PD" = "ws-c3650-48pd"
+    "WS-C3650-48PS" = "ws-c3650-48ps"
+    "WS-C3650-48TQ" = "ws-c3650-48tq"
+
+    # Cisco 3700
+
+    "WS-C3750X-24P" = "ws-c3750x-24"
+
+    # Cisco 3800
+
+    "WS-C3850-12X48U" = "catalyst-3850-48pt-12-mgig36-gig-upoe"
+    "WS-C3850-24P" = "ws-c3850-24p"
+    "WS-C3850-24T" = "ws-c3850-24t"
+    "WS-C3850-24XU" = "ws-c3850-24xu"
+    "WS-C3850-48P" = "ws-c3850-48p"
+
+    # Cisco 4000
+
+    "WS-C4500X-16" = "ws-c4500x-16sfp_plus"
+    "WS-C4948" = "ws-c4948-s"
+
+    "ISR4451-X/K9" = "isr4451-x"
+
+    # Cisco Nexus 3K
+
+    "C3064PQ" = "n3k-c3064pq"
+
+    # Cisco Nexus 5K
+
+    "5672UP" = "n5k-c5672up"
+
+    # Cisco Nexus 7K
+
+    "C7004" = "n7k-7004"
+    "C7009" = "n7k-7009"
+    "C7702" = "n7k-7702"
+    "C7706" = "n7k-7706"
+
+    # Cisco Nexus 9K
+
+    "93180YC-EX" = "n9k-c93180yc-ex"
+    "C93108TC-FX" = "n9k-c93108tc-fx"
+    "C93180YC-FX" = "n9k-c93180yc-fx"
+    "C9348GC-FXP" = "n9k-c9348gc-fxp"
+    "C9372PX" = "n9k-c9372px"
+
+    # Palo Alto
+
+#    "pa-3220" = ""
+#    "pa-3260" = ""
+#    "pa-5220" = ""
+#    "pa-5250" = ""
+#    "pa-5260" = ""
+#    "pa-7050" = ""

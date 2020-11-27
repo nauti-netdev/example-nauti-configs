@@ -1,0 +1,4 @@
+[netbox.default]
+    url = "$NETBOX_ADDR"
+    credentials.token = "$NETBOX_TOKEN"
+    options.timeout = 60

@@ -1,0 +1,8 @@
+[clearpass.default]
+    url = "$CLEARPASS_ADDR"
+    credentials.client_id = "$CLEARPASS_CLIENT_ID"
+    credentials.client_secret = "$CLEARPASS_CLIENT_SECRET"
+    options.timeout = 60
+
+[clearpass.vars]
+    tacacs_secret = "$TACACS_SECRET"

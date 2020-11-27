@@ -1,0 +1,17 @@
+[ipfabric.default]
+    url = "$IPF_ADDR"
+    credentials.token = "$IPF_TOKEN"
+
+
+[ipfabric.expands.interface]
+
+    # -------------------------------------------------------------------------
+    # map IP Fabric "short interface name" to "long interface name"
+    # -------------------------------------------------------------------------
+
+    "Et" = "Ethernet"
+    "Lo" = "Loopback"
+    "Vl" = "Vlan"
+    "Po" = "Port-Channel"
+    "Gi" = "GigabitEthernet"
+    "Te" = "TenGigabitEthernet"

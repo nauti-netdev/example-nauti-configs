@@ -1,0 +1,4 @@
+origin = "ipfabric"
+target = "netbox"
+collection = "devices"
+reconciler.module = "nauti_ipfabric_netbox.tasks.devices"
