@@ -1,9 +1,9 @@
-from nauti.tasks import DiffCollectionsFilter
 from nauti.collections.devices import DeviceCollection
+from nauti.auditor import Auditor
+from nauti_netbox.auditors import NetboxWithDeviceAuditor
 
-
-@DiffCollectionsFilter.register('netbox', 'clearpass', 'devices')
-class Nb2CPDevicesFilter(DiffCollectionsFilter):
+@Auditor.register('netbox', 'clearpass', 'devices')
+class Nb2CPDevicesAuditor(Auditor):
     fields = ('hostname', 'os_name', 'site', 'ipaddr')
     key_fields = ('hostname', )
 
@@ -23,9 +23,9 @@ class Nb2CPDevicesFilter(DiffCollectionsFilter):
         return True
 
 
-@DiffCollectionsFilter.register('ipfabric', 'netbox', 'devices')
-class IPFabricToNetboxDevicesFilter(DiffCollectionsFilter):
-    fields = set(DeviceCollection.FIELDS) - {'model', 'ipaddr'}
+@Auditor.register('ipfabric', 'netbox', 'devices')
+class AuditIPFabricToNetboxDevices(Auditor):
+    fields = set(DeviceCollection.FIELDS) - {'model'}
     key_fields = ('hostname', )
 
     def origin_key_filter(self, item: dict):
@@ -40,7 +40,10 @@ class IPFabricToNetboxDevicesFilter(DiffCollectionsFilter):
         return item['hostname'] in self.origin.items
 
 
-@DiffCollectionsFilter.register('ipfabric', 'netbox', 'devices')
-class IPFabricToNetboxDevicesFilter(DiffCollectionsFilter):
-    fields = set(DeviceCollection.FIELDS) - {'model', 'ipaddr'}
-    key_fields = ('hostname', )
+# @DiffCollectionsFilter.register('ipfabric', 'netbox', 'devices')
+# class IPFabricToNetboxDevicesFilter(DiffCollectionsFilter):
+#     fields = set(DeviceCollection.FIELDS) - {'model', 'ipaddr'}
+#     key_fields = ('hostname', )
+
+
+

@@ -13,4 +13,9 @@ domain_names = [
 ]
 
 sources = ['ipfabric', 'netbox', 'clearpass']
-collections = ['devices', 'interfaces', 'ipaddrs', 'interfaces']
+
+collections = [
+    'sites',
+    'devices', 'interfaces', 'portchans',
+    'ipaddrs',
+]

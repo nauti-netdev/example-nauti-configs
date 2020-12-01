@@ -15,3 +15,4 @@
     "Po" = "Port-Channel"
     "Gi" = "GigabitEthernet"
     "Te" = "TenGigabitEthernet"
+    "Vx" = "VxLan"
