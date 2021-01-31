@@ -4,7 +4,12 @@ name = 'devices'
 
     vendors = ['arista', 'cisco', "avocent", "raritran"]
 
-    os_name = ['eos', 'ios', 'ios-xe', 'ios-xr', 'nx-os']
+    os_name.'eos' = 'arista'
+    os_name.'ios' = 'cisco'
+    os_name.'ios-xe' = 'cisco'
+    os_name.'ios-xr' = 'cisco'
+    os_name.'nx-os' = 'cisco'
+    os_name.'avocent' = 'avocent'
 
     models = [
         # ---------------------------------------------------------------------
@@ -15,7 +20,7 @@ name = 'devices'
         "dcs-7010t-48",
         "dcs-7020sr-32c2",
         "dcs-7050cx3-32s", "dcs-7050sx3-48yc12",
-        "dcs-7280cr2a-30", "dcs-7280sr2-48yc6",
+        "dcs-7280cr2a-30", "dcs-7280sr2-48yc6", "dcs-7280sr3-48yc6",
         "cvx",
 
         # ---------------------------------------------------------------------
@@ -90,19 +95,13 @@ name = 'devices'
 #
 # -----------------------------------------------------------------------------
 
-[sources.clearpass.maps.vendor]
-    "Arista" = "arista"
-    "Cisco" = "cisco"
-    "Avocent" = 'avocent'
-    "Raritran" = 'raritran'
-    'Cisco-ASA' = 'cisco:cisco'
-
-[sources.clearpass.maps.cisco]
-    # when vendor is Cisco, there are different Clearpass Vendor options; so we
-    # will use the os_name field to determine how to do the 2nd-order mapping
-    # for Cisco specifically
-
-    "Cisco-ASA" = 'asa'
+[sources.clearpass.maps.vendors]
+    'eos' = 'Cisco'
+    'ios' = 'Cisco'
+    'nx-os' = 'Cisco'
+    'ios-xe' = 'Cisco'
+    'ios-xr' = 'Cisco'
+    'asa' = 'Cisco-ASA'
 
 # -----------------------------------------------------------------------------
 #
@@ -125,6 +124,7 @@ name = 'devices'
     "DCS-7050SX3-48YC12-F" = "dcs-7050sx3-48yc12"
     "DCS-7280CR2A-30-F" = "dcs-7280cr2a-30"
     "DCS-7280SR2K-48C6-M-F" = "dcs-7280sr2-48yc6"
+    "DCS-7280SR3-48YC8-F" = "dcs-7280sr3-48yc6"
     "CVX" = "cvx"
 
     # Cisco ASA
@@ -192,8 +192,8 @@ name = 'devices'
 
     # Cisco Nexus 5K
 
-    "5672UP" = "n5k-c5672up"
-
+    # "5672UP" = "n5k-c5672up"
+    "N5K-C5672UP" = "n5k-c5672up"
     # Cisco Nexus 7K
 
     "C7004" = "n7k-7004"
