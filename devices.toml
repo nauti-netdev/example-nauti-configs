@@ -2,7 +2,7 @@ name = 'devices'
 
 [fields]
 
-    vendors = ['arista', 'cisco', "avocent", "raritran"]
+    vendors = ['arista', 'cisco', "avocent", "raritran", "extreme"]
 
     os_name.'eos' = 'arista'
     os_name.'ios' = 'cisco'
@@ -10,6 +10,7 @@ name = 'devices'
     os_name.'ios-xr' = 'cisco'
     os_name.'nx-os' = 'cisco'
     os_name.'avocent' = 'avocent'
+    os_name.'exos' = 'extreme'
 
     models = [
         # ---------------------------------------------------------------------
@@ -209,6 +210,9 @@ name = 'devices'
     "C9348GC-FXP" = "n9k-c9348gc-fxp"
     "C9372PX" = "n9k-c9372px"
 
+    # Extreme
+
+    '5520-24W-EXOS' = '5520-24w-exos'
     # Palo Alto
 
 #    "pa-3220" = ""
@@ -217,3 +221,6 @@ name = 'devices'
 #    "pa-5250" = ""
 #    "pa-5260" = ""
 #    "pa-7050" = ""
+
+[sources.ipfabric.maps.os_name]
+    'xos' = 'exos'
