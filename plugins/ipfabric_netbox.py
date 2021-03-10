@@ -38,3 +38,23 @@ class AuditIPFabricToNetboxDevices(Auditor):
     def target_key_filter(self, item: dict):
         """ only include items that are present in the origin source """
         return item['hostname'] in self.origin.items
+
+
+@Auditor.register(
+    name='mlb-radio', collection='devices',
+    origin='ipfabric', target='netbox'
+)
+class AuditIPFabricToNetboxMLBRadioDevices(Auditor):
+    fields = set(DeviceCollection.FIELDS)
+    key_fields = ('hostname', )
+
+    def origin_fetch_filter(self):
+        return 'siteName = MLB-Radio'
+
+    def origin_key_filter(self, item):
+        item['site'] = item['site'].lower()
+        return True
+
+    def target_key_filter(self, item: dict):
+        """ only include items that are present in the origin source """
+        return item['hostname'] in self.origin.items

@@ -18,7 +18,7 @@ class Nb2CPDevicesAuditor(Auditor):
         if item['status'] not in ['active', 'offline', 'staged', 'planned']:
             return False
 
-        if item['vendor'] == 'pan':
+        if item['vendor'] in ['pan', 'meraki']:
             return False
 
         return True
